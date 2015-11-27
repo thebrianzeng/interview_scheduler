@@ -1,0 +1,5 @@
+.vagrant/*
+*.pyc
+app/config/flask_config.py
+*.swp
+

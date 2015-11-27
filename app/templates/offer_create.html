@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+
+{% block title %} Create Offer {% endblock %}
+
+{% block content %}
+
+<div class="mission-statement add-offer-title">
+    <h2>Add an offer!</h2>
+    <h3><a href="/">(or click here to get back to the offers)</a></h3>
+</div>
+
+<div id="content" class="container add-offer-form">
+    <form action="/offers/create" method="POST">
+        <div class="input-group-lg">
+            <label for="company">Company</label>
+            <input class="form-control" id="company" name="company" placeholder="E.g. Google" required/>
+        </div>
+        <br>
+        <div class="form-group">
+            <label for="salary">Salary</label>
+            <div class="input-group-lg">
+                <input id="salary" type="text" class="form-control"
+                placeholder="E.g. $8000/month or $35/hour" name="salary" required>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="housing">Housing</label>
+            <div class="input-group-lg">
+                <input id="housing" type="text" class="form-control"
+                placeholder="E.g. $9000/summer or $1500/month" name="housing" required>
+            </div>
+        </div>
+
+        <div class="checkbox">
+            <label for="has_corporate_housing">
+                <input name="has_corporate_housing" value="1" type="checkbox">&nbsp;Corporate Housing?
+            </label>
+        </div>
+
+        <div class="form-group">
+            <label for="relocation">Relocation</label>
+            <div class="input-group-lg">
+                <input id="relocation" type="text" class="form-control"
+                placeholder="E.g. $2500/summer or N/A" name="relocation" required>
+            </div>
+        </div>
+
+        <div class="input-group-lg">
+            <label for="perks">Perks</label>
+            <input class="form-control" id="perks" 
+            placeholder="E.g. lunch, dinner, gym" name="perks">
+        </div>
+
+        <br>
+
+        <div class="input-group-lg">
+            <label for="school">School</label>
+            <input class="form-control" id="school" 
+            placeholder="E.g. Columbia" name="school" required>
+        </div>
+
+        <br>
+
+        <div class="input-group-lg">
+            <label for="graduation_year">Graduation Year</label>
+            <input class="form-control" id="graduation_year" 
+            placeholder="E.g. 2017" name="graduation_year" required>
+        </div>
+
+        <br>
+
+        <button class="button" type="submit">Submit</button>
+    </form>
+</div>
+
+{% endblock %}
