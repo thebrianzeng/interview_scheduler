@@ -1,4 +1,6 @@
-from flask import Blueprint, request, render_template
+import json
+
+from flask import Blueprint, request, redirect, render_template, session, jsonify
 
 from app.database import interviewees as interviewees_db
 from app.database import interviewers as interviewers_db
@@ -51,7 +53,7 @@ def get_interviewee_form(rc_id):
 
         interviewees_db.create_interviewee(name=name, availabilities=availabilities, 
                                            rc_id=rc_id)
-        return 'success'
+        return jsonify(data='success')
 
 
 @rc.route('/<rc_id>/interviewer_form', methods=['GET', 'POST'])
@@ -69,4 +71,10 @@ def get_interviewer_form(rc_id):
 
         interviewers_db.create_interviewer(name=name, availabilities=availabilities,
                                            rc_id=rc_id)
-        return 'success'
+        return jsonify(data='success')
+
+
+@rc.route('/form_submitted')
+def get_form_submitted_page():
+    return render_template('form_submitted.html')
+
