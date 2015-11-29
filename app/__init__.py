@@ -6,13 +6,13 @@ from oauth2client.client import OAuth2WebServerFlow
 
 app = Flask(__name__)
 db = MongoEngine(app)
+flow = None
 
 from config import flask_config
 
 from app.database import users as users_db
 from models.users import User
 from routes import register_blueprints
-from routes.offers import get_offers
 
 # Load config
 app.config.from_object(flask_config)
@@ -32,9 +32,10 @@ CLIENT_ID = app.config['CLIENT_ID']
 CLIENT_SECRET = app.config['CLIENT_SECRET']
 
 
-@app.route('/')
-def home():
-    return get_offers()
+@app.errorhandler(404)
+def error_404(error):
+    return render_template('error/404.html'), 404
+
 
 def create_flow():
     global flow
@@ -66,6 +67,7 @@ def get_user(email):
     user = User.objects.filter(email=email).first()
     print user
     return user
+
 
 @app.route('/logout')
 def logout():
