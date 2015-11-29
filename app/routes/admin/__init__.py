@@ -15,10 +15,10 @@ def create_recruiting_cycle():
     return redirect(new_recruiting_cycle_url)
 
 
-def match(interviewers_to_slots, interviewees_to_slots, schedule):
+def match(interviewers_to_slots, interviewees_to_slots, current_schedule, possible_schedules=[]):
     """ Generate the interview matching """
     if not interviewees_to_slots:
-        return schedule
+        possible_schedules.append(current_schedule)
 
     for interviewer, interviewer_slots in interviewers_to_slots.items():
         for interviewee, interviewee_slots in interviewees_to_slots.items():
@@ -27,10 +27,10 @@ def match(interviewers_to_slots, interviewees_to_slots, schedule):
                     interviewer_interviewee_pair = {'interviewer': interviewer, 
                                                     'interviewee': interviewee}
 
-                    if slot not in schedule:
-                        schedule[slot] = []
+                    if slot not in current_schedule:
+                        current_schedule[slot] = []
 
-                    schedule[slot].append(interviewer_interviewee_pair)
+                    current_schedule[slot].append(interviewer_interviewee_pair)
                     
                     interviewees_to_slots.pop(interviewee)
                     interviewers_to_slots[interviewer].remove(slot)
@@ -38,19 +38,16 @@ def match(interviewers_to_slots, interviewees_to_slots, schedule):
                     if not interviewers_to_slots[interviewer]:
                         interviewers_to_slots.pop(interviewer)
 
-                    schedule = match(interviewers_to_slots, interviewees_to_slots, schedule)
-
-                    if schedule:
-                        return schedule
+                    current_schedule = match(interviewers_to_slots, interviewees_to_slots, current_schedule)
                     
-    return None  # couldn't match them
+    return possible_schedules # couldn't match them
 
 
 if __name__ == '__main__':
     # Test case - normal
     interviewers_to_slots = {'interviewer 1': ['slot1', 'slot2'],
                              'interviewer 2': ['slot2', 'slot3']}
-    interviewees_to_slots = {'interviewee 1': ['slot2', 'slot5'],
-                             'interviewee 2': ['slot3']}
+    interviewees_to_slots = {'interviewee 1': ['slot1', 'slot5'],
+                             'interviewee 2': ['slot2', 'slot3']}
 
     print match(interviewers_to_slots, interviewees_to_slots, {})

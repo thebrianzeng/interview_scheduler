@@ -1,0 +1,52 @@
+<style>
+
+table td {
+    width:100px;
+    height:100px;
+    text-align:center;
+    vertical-align:middle;
+    background-color:#ccc;
+    border:1px solid #fff;
+}
+
+table td.highlighted {
+    background-color:#999;
+}
+
+</style>
+
+<table cellpadding="0" cellspacing="0" id="our_table">
+    {% for time_slot in range(30) %}
+    <tr>
+        {% for day in range(7) %}
+        <td>
+            Time slot: {{ time_slot }}, Day: {{ day }}
+        </td>
+        {% endfor %}
+    </tr>
+    {% endfor %}
+</table>
+
+<script>
+$(function () {
+        var isMouseDown = false,
+        isHighlighted;
+        $("#our_table td")
+        .mousedown(function () {
+            isMouseDown = true;
+            $(this).toggleClass("highlighted");
+            isHighlighted = $(this).hasClass("highlighted");
+            return false; // prevent text selection
+            })
+        .mouseover(function () {
+            if (isMouseDown) {
+            $(this).toggleClass("highlighted", isHighlighted);
+            }
+            });
+
+        $(document)
+        .mouseup(function () {
+            isMouseDown = false;
+            });
+        });
+</script>

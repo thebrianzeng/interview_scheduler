@@ -2,6 +2,16 @@
 
 {% block content %}
 
-interviewee form
+<h1>Fill out your available times</h1>
+<h3>Please fill out every time slot that you are available so 
+    that we can make sure we find you an interview time slot.</h3>
+
+<form>
+    <input name="name" placeholder="What's your name?"/>
+</form>
+
+{% include 'timeslots.html' %}
+
+<button>Submit</button>
 
 {% endblock %}
