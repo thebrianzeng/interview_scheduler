@@ -3,7 +3,7 @@
 {% block content %}
 
 <h1>Fill out your available times</h1>
-<h3>Please fill out every time slot that you are available so 
+<h3>Please fill out every time slot that you are available so
     that we can make sure we find you an interview time slot.</h3>
 
 <form>
@@ -14,42 +14,5 @@
 
 <button id="submit-availabilities-button">Submit</button>
 
-<script>
-
-function getAvailabilities() {
-    var availabilities = [];
-    $('.highlighted').each(function() {
-        var dayAndTimeSlot = $(this).data('day') + ':' + $(this).data('time-slot');
-        availabilities.push(dayAndTimeSlot)
-    }); 
-
-    return availabilities;
-}
-
-$('#submit-availabilities-button').click(function() {
-        var postUrl = '/recruiting_cycles/1/interviewer_form';
-        var availabilities = getAvailabilities();
-        var name = $('#name').val();
-
-        var nameAndAvailabilities = {
-            name: name,
-            availabilities: availabilities
-        };
-
-        var nameAndAvailabilitiesJSON = JSON.stringify(nameAndAvailabilities);
-
-        $.ajax({
-            type: "POST",
-            contentType: "application/json; charset=utf-8",
-            url: postUrl, 
-            data: nameAndAvailabilitiesJSON,
-            success: function (data) {
-                // TODO: this does not work yet
-                console.log('success');
-            },
-            dataType: "json"
-            });
-        });
-</script>
-
+<script>setupSubmit('/1/interviewer_form');</script>
 {% endblock %}
