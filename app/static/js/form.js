@@ -29,8 +29,7 @@
                 url: postUrl,
                 data: nameAndAvailabilitiesJSON,
                 success: function (data) {
-                    // TODO: this does not work yet
-                    console.log('success');
+                    location.href = '/form_submitted';
                 },
                 dataType: "json"
             });
