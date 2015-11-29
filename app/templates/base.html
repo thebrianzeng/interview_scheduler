@@ -52,12 +52,13 @@
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800,300' rel='stylesheet' type='text/css'>
     {%- endblock fonts -%}
     {%- block css-%}
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/lib/reset.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
     {%- endblock css-%}
     {%- block analytics -%}
     <!-- Google Analytics go here -->
     {%- endblock -%}
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="{{ url_for('static', filename='js/form.js') }}"></script>
 </head>
 <body>
     {% block content %}{% endblock %}
@@ -65,7 +66,6 @@
         <p><a href="https://github.com/thebrianzeng/When2Interview">When2Interview</a> is made by <a href="http://thebrianzeng.com">Brian</a> and <a href="https://schlosser.io">Dan</a> and is maintained by <a href="https://adicu.com/labs">ADI Labs</a>.</p>
     </footer>
     {%- block js -%}
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     {%- endblock -%}
 </body>
 </html>
