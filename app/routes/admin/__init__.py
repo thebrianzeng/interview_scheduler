@@ -3,6 +3,8 @@ from pprint import pprint
 
 from flask import Blueprint, request, redirect, render_template, session
 
+from app.database import recruiting_cycles as rc_db
+
 admin = Blueprint('admin', __name__)
 
 @admin.route('/')
@@ -10,12 +12,15 @@ def home():
     return render_template('admin_home.html')
 
 
-@admin.route('/create_recruiting_cycle', methods=['POST'])
+@admin.route('/new_recruiting_cycle', methods=['GET', 'POST'])
 def create_recruiting_cycle():
-    # create a new recruiting cycle and return the page for it
-    new_recruiting_cycle_id = "1"
-    new_recruiting_cycle_url = '/recruiting_cycles/' + new_recruiting_cycle_id
-    return redirect(new_recruiting_cycle_url)
+    if request.method == 'GET':
+        return render_template('new_recruiting_cycle.html')
+    else:  # POST
+        url = request.form['url']
+        rc_db.new_recruiting_cycle(url=url)
+        return redirect(url)
+
 
 def match(slots_to_interviewers, interviewees_to_slots, current_schedule, possible_schedules):
     if not interviewees_to_slots:
