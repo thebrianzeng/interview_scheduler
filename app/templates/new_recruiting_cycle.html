@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>Create a new recruiting cycle!</h1>
+
+<form method="POST" action="/admin/new_recruiting_cycle">
+    What url would you like to give your new recruiting cycle? (e.g. adi-s2016) <input name="url" required\>
+    <input type="submit"/>
+</form>
+
+
+{% endblock %}

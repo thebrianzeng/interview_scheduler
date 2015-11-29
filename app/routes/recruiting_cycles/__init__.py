@@ -42,15 +42,15 @@ def get_interviewee_form(rc_id):
     if request.method == 'GET':
         days = ['12/5', '12/6', '12/7', '12/8', '12/9', '12/10']
         time_slots = get_time_slots(9, 23)
-        return render_template('interviewee_form.html',
-                               days=days, time_slots=time_slots)
-    else:  # POST
+        return render_template('interviewee_form.html', 
+                                rc_id=rc_id, days=days, time_slots=time_slots)
+    else: # POST
         name_and_availabilities = request.get_json()
         name = name_and_availabilities['name']
         availabilities = name_and_availabilities['availabilities']
 
-        interviewees_db.create_interviewee(name=name,
-                                           availabilities=availabilities)
+        interviewees_db.create_interviewee(name=name, availabilities=availabilities, 
+                                           rc_id=rc_id)
         return 'success'
 
 
@@ -59,13 +59,14 @@ def get_interviewer_form(rc_id):
     if request.method == 'GET':
         days = ['12/5', '12/6', '12/7', '12/8', '12/9', '12/10']
         time_slots = get_time_slots(9, 23)
-        return render_template('interviewer_form.html',
-                               days=days, time_slots=time_slots)
-    else:  # POST
+        return render_template('interviewer_form.html', 
+                                rc_id=rc_id, days=days, time_slots=time_slots)
+    else: # POST
         name_and_availabilities = request.get_json()
         name = name_and_availabilities['name']
         availabilities = name_and_availabilities['availabilities']
+                                  availabilities=availabilities)
 
-        interviewers_db.create_interviewer(name=name,
-                                           availabilities=availabilities)
+        interviewers_db.create_interviewer(name=name, availabilities=availabilities,
+                                           rc_id=rc_id)
         return 'success'
