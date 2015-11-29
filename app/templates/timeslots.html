@@ -1,41 +1,27 @@
-<style>
+<div class="table">
+    <table id="availabilities">
+        <thead>
+            {% for day in days %}
+            <th>{{ day }}</th>
+            {% endfor %}
+        </thead>
 
-table td {
-    width:100px;
-    height:10px;
-    text-align:center;
-    vertical-align:middle;
-    background-color:#ccc;
-    border:1px solid #fff;
-}
-
-table td.highlighted {
-    background-color:#999;
-}
-
-</style>
-
-<table cellpadding="0" cellspacing="0" id="our_table">
-    <th></th>
-    {% for day in days %}
-    <th>{{ day }}</th>
-    {% endfor %}
-
-    {% for time_slot in time_slots %}
-    <tr>
-        <td>{{ time_slot }}</td>
-        {% for day in days %}
-        <td data-day="{{ day }}" data-time-slot="{{ time_slot }}"></td>
+        {% for time_slot, label in time_slots %}
+        <tr>
+            <td class="time-slot">{{ label }}</td>
+            {% for day in days %}
+            <td data-day="{{ day }}" data-time-slot="{{ time_slot }}"></td>
+            {% endfor %}
+        </tr>
         {% endfor %}
-    </tr>
-    {% endfor %}
-</table>
+    </table>
+</div>
 
 <script>
 $(function () {
         var isMouseDown = false,
         isHighlighted;
-        $("#our_table td")
+        $("#availabilities td:not(:first-child)")
         .mousedown(function () {
             isMouseDown = true;
             $(this).toggleClass("highlighted");
@@ -48,8 +34,7 @@ $(function () {
             }
             });
 
-        $(document)
-        .mouseup(function () {
+        $(document).mouseup(function () {
             isMouseDown = false;
             });
         });
