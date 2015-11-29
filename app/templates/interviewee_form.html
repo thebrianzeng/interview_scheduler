@@ -2,15 +2,16 @@
 
 {% block content %}
 <div class="content">
-    <h1>Fill out your availability</h1>
-    <p>Please fill out <strong>every time slot</strong> that you are available so
-    that we can make sure we find you an interview time slot.</p>
-
-    <form>
-        <input id="name" name="name" placeholder="What's your name?"/>
-    </form>
-    {% include 'timeslots.html' %}
-    <button id="submit-availabilities-button">Submit</button>
-    <script>setupSubmit('/1/interviewee_form');</script>
+    <div class="text-content">
+        <h1>Fill out your availability</h1>
+        <p>Please fill out <strong>every time slot</strong> that you are available so
+        that we can make sure we find you an interview time slot.</p>
+        <form>
+            <input type="text" type="text" id="name" name="name" placeholder="What's your name?"/>
+        </form>
+        {% include 'timeslots.html' %}
+        <button id="submit-availabilities-button">Submit</button>
+        <script>setupSubmit('/1/interviewee_form');</script>
+    </div>
 </div>
 {% endblock %}

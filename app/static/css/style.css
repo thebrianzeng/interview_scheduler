@@ -13,8 +13,69 @@ h1 {
     text-align: center;
 }
 
-p {
+input[type="text"] {
+    padding: 1rem;
+}
 
+.text-content {
+    padding: 0 3rem;
+}
+
+.table {
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    margin-left: -3rem;
+    padding: 1rem 0 1rem 3rem;
+    max-width: 100%;
+    overflow: scroll;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+.time-slot {
+    position: absolute;
+    right: 100%;
+    top: 0;
+    background-color: rgba(0,0,0,0);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    border-top: 1px solid #CCCCCC;
+    text-align: right;
+}
+
+table tr {
+    position: relative;
+    display: block;
+}
+
+table tr:nth-child(even) .time-slot {
+    visibility: hidden;
+}
+
+table th {
+    font-weight: 400;
+    font-size: 0.75rem;
+}
+
+table td, table th {
+    border: none;
+    outline: 0;
+    width:60px;
+    height:12px;
+    text-align:center;
+    vertical-align:middle;
+    background-color: #CCCCCC;
+    border-right:1px solid #FFFFFF;
+}
+
+table td {
+    border-top:1px solid #FFFFFF;
+}
+
+table td.highlighted {
+    background-color:#999999;
 }
 
 .content {
