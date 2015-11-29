@@ -7,19 +7,56 @@ from app.database import recruiting_cycles as rc_db
 
 admin = Blueprint('admin', __name__)
 
+
 @admin.route('/')
 def home():
     return render_template('admin_home.html')
 
 
 @admin.route('/new_recruiting_cycle', methods=['GET', 'POST'])
-def create_recruiting_cycle():
+def new_recruiting_cycle():
     if request.method == 'GET':
         return render_template('new_recruiting_cycle.html')
     else:  # POST
         url = request.form['url']
         rc_db.new_recruiting_cycle(url=url)
         return redirect(url)
+
+
+@admin.route('/get_schedules')
+def get_schedules():
+    interviewees_to_slots = get_interviewees_to_slots()
+    slots_to_interviewers = get_slots_to_interviewers()
+
+    possible_schedules = match(slots_to_interviewers, interviewees_to_slots,
+                               {}, [])
+
+    return jsonify(possible_schedules)
+
+
+def get_interviewees_to_slots():
+    interviewees_to_slots = {}
+
+    interviewees = interviewees_db.get_interviewees()
+    for interviewee in interviewees:
+        interviewees_to_slots[interviewee.name] = interviewee.availabilities
+
+    return interviewees_to_slots
+
+
+def get_slots_to_interviewers():
+    slots_to_interviewers = {}
+
+    interviewers = interviewers_db.get_interviewers()
+
+    for interviewer in interviewers:
+        for slot in interviewer.availabilities:
+            if slot not in slots_to_interviewers:
+                slots_to_interviewers[slot] = []
+
+            slots_to_interviewers.append(interviewer.name)
+
+    return slots_to_interviewers
 
 
 def match(slots_to_interviewers, interviewees_to_slots, current_schedule, possible_schedules):
