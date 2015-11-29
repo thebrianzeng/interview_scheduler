@@ -1,9 +1,8 @@
 from app.models.interviewer import Interviewer
 
 
-def create_interviewer(name, slots):
-    # TODO: convert slots to a list form
-    new_interviewer = User(name=name, slots=slots)
+def create_interviewer(name, availabilities):
+    new_interviewer = User(name=name, availabilities=availabilities)
     new_interviewer.save()
 
 

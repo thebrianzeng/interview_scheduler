@@ -1,8 +1,8 @@
 from app.models.interviewee import Interviewee
 
 
-def create_interviewee(name, slots):
-    new_interviewee = User(name=name, slots=slots)
+def create_interviewee(name, availabilities):
+    new_interviewee = User(name=name, availabilities=availabilities)
     new_interviewee.save()
 
 

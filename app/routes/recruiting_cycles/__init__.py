@@ -40,24 +40,25 @@ def get_interviewee_form(rc_id):
         return render_template('interviewee_form.html', 
                                 days=days, time_slots=time_slots)
     else: # POST
-        availabilities = request.get_json()
+        name_and_availabilities = request.get_json()
+        name = name_and_availabilities['name']
+        availabilities = name_and_availabilities['availabilities']
+
+        interviewees_db.create_interviewee(name=name, availabilities=availabilities)
         return 'success'
-#        name = request.form['name']
-#        name = request.slots['slots']
-#
-#        interviewee_db.create_interviewee(name, slots)
-#
-#        return render_template('interviewee_form_submitted.html')
-#
+
 
 @rc.route('/<rc_id>/interviewer_form', methods=['GET', 'POST'])
 def get_interviewer_form(rc_id):
     if request.method == 'GET':
-        return render_template('interviewer_form.html')
+        days = ['12/5', '12/6', '12/7', '12/8', '12/9', '12/10']
+        time_slots = get_time_slots(9, 23)
+        return render_template('interviewer_form.html', 
+                                days=days, time_slots=time_slots)
     else: # POST
-        name = request.form['name']
-        name = request.slots['slots']
+        name_and_availabilities = request.get_json()
+        name = name_and_availabilities['name']
+        availabilities = name_and_availabilities['availabilities']
 
-        interviewer_db.create_interviewer(name, slots)
-
-        return render_template('interviewer_form_submitted.html')
+        interviewers_db.create_interviewer(name=name, availabilities=availabilities)
+        return 'success'

@@ -7,7 +7,7 @@
     that we can make sure we find you an interview time slot.</h3>
 
 <form>
-    <input name="name" placeholder="What's your name?"/>
+    <input id="name" name="name" placeholder="What's your name?"/>
 </form>
 
 {% include 'timeslots.html' %}
@@ -19,23 +19,30 @@
 function getAvailabilities() {
     var availabilities = [];
     $('.highlighted').each(function() {
-        console.log($(this).data('day'));
-        console.log($(this).data('time-slot'));
+        var dayAndTimeSlot = $(this).data('day') + ':' + $(this).data('time-slot');
+        availabilities.push(dayAndTimeSlot)
     }); 
 
-    availabilities = ["9:00-9:30", "9:30-10:00"];  // TODO: remove this
     return availabilities;
 }
 
 $('#submit-availabilities-button').click(function() {
         var postUrl = '/recruiting_cycles/1/interviewee_form';
         var availabilities = getAvailabilities();
-        var availabilitiesJSON = JSON.stringify(availabilities);
+        var name = $('#name').val();
+
+        var nameAndAvailabilities = {
+            name: name,
+            availabilities: availabilities
+        };
+
+        var nameAndAvailabilitiesJSON = JSON.stringify(nameAndAvailabilities);
+
         $.ajax({
             type: "POST",
             contentType: "application/json; charset=utf-8",
             url: postUrl, 
-            data: availabilitiesJSON,
+            data: nameAndAvailabilitiesJSON,
             success: function (data) {
                 // TODO: this does not work yet
                 console.log('success');
@@ -46,4 +53,3 @@ $('#submit-availabilities-button').click(function() {
 </script>
 
 {% endblock %}
-
