@@ -11,7 +11,7 @@
         </form>
         {% include 'timeslots.html' %}
         <button id="submit-availabilities-button">Submit</button>
-        <script>setupSubmit('/1/interviewee_form');</script>
+        <script>setupSubmit('/{{ rc_id }}/interviewee_form');</script>
     </div>
 </div>
 {% endblock %}
