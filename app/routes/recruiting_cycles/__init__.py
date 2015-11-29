@@ -1,3 +1,5 @@
+import json
+
 from flask import Blueprint, request, redirect, render_template, session
 
 from app.database import interviewees as interviewees_db
@@ -17,13 +19,15 @@ def get_interviewee_form(rc_id):
     if request.method == 'GET':
         return render_template('interviewee_form.html')
     else: # POST
-        name = request.form['name']
-        name = request.slots['slots']
-
-        interviewee_db.create_interviewee(name, slots)
-
-        return render_template('interviewee_form_submitted.html')
-
+        availabilities = request.get_json()
+        return 'success'
+#        name = request.form['name']
+#        name = request.slots['slots']
+#
+#        interviewee_db.create_interviewee(name, slots)
+#
+#        return render_template('interviewee_form_submitted.html')
+#
 
 @rc.route('/<rc_id>/interviewer_form', methods=['GET', 'POST'])
 def get_interviewer_form(rc_id):

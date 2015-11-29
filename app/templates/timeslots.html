@@ -16,9 +16,9 @@ table td.highlighted {
 </style>
 
 <table cellpadding="0" cellspacing="0" id="our_table">
-    {% for time_slot in range(30) %}
+    {% for time_slot in time_slots %}
     <tr>
-        {% for day in range(7) %}
+        {% for day in days %}
         <td>
             Time slot: {{ time_slot }}, Day: {{ day }}
         </td>
