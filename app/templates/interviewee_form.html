@@ -19,6 +19,8 @@
 function getAvailabilities() {
     var availabilities = [];
     $('.highlighted').each(function() {
+        console.log($(this).data('day'));
+        console.log($(this).data('time-slot'));
     }); 
 
     availabilities = ["9:00-9:30", "9:30-10:00"];  // TODO: remove this
@@ -29,21 +31,18 @@ $('#submit-availabilities-button').click(function() {
         var postUrl = '/recruiting_cycles/1/interviewee_form';
         var availabilities = getAvailabilities();
         var availabilitiesJSON = JSON.stringify(availabilities);
-        //$.post(postUrl, availabilitiesJSON, function(data) {
-        //    location.href = '/'; 
-        //}, "json");
         $.ajax({
             type: "POST",
             contentType: "application/json; charset=utf-8",
             url: postUrl, 
             data: availabilitiesJSON,
             success: function (data) {
+                // TODO: this does not work yet
                 console.log('success');
             },
             dataType: "json"
             });
         });
-
 </script>
 
 {% endblock %}
