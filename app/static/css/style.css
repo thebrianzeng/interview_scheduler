@@ -1,210 +1,46 @@
 html, body {
-    height: 100%;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    min-height: 100%;
     margin: 0;
+    padding: 2rem;
+    font-size: 16px;
     font-family: 'Open Sans';
+    background-color: #E5E5E5;
+}
+
+h1 {
+    text-align: center;
+}
+
+p {
+
+}
+
+.content {
     background-color: white;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16),
+                0 2px 10px 0 rgba(0, 0, 0, 0.12);
+    -webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16),
+                        0 2px 10px 0 rgba(0, 0, 0, 0.12);
+    margin: 0 auto;
+    max-width: 50rem;
+    padding: 2rem;
 }
 
-h1, h2, h3 {
-    font-weight: 600;
-}
-
-h2 {
-    font-size: 70px;
-    line-height: 100px;
-    letter-spacing: -1px;
-    margin-bottom: 5rem;
+footer p {
+    text-align: center;
+    font-size: 0.85rem;
 }
 
 a, a:hover {
-    text-decoration: none;
-    color: white;
+    color: inherit;
 }
 
-p, li, td {
-    color: #7F7D7A;
+@media screen and (max-width: 640px) {
+    html, body {
+        padding: 1rem;
+    }
 }
-
-th {
-    font-size: 16px;    
-    font-weight: 700;
-    min-width: 140px;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    padding-right: 20px;
-}
-
-td {
-    padding-top: 10px;
-    padding-bottom: 10px;
-    padding-right: 25px;
-}
-
-tr {
-    border-bottom: 1px solid #DDDDDD;
-}
-
-thead {
-    border-bottom: 3px solid #DDDDDD;
-}
-
-label {
-    font-size: 24px;
-    font-weight: 400;
-}
-
-input[type='checkbox'] {
-    width: 20px;
-    height: 20px;
-    margin-top: 5px;
-}
-
-.navbar {
-    text-align: center;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    height: 80px;
-    background-color: #337AB7;
-}
-
-.navbar-title {
-    font-family: 'Open Sans' sans-serif;
-    font-weight: 300;
-    font-size: 50px;
-    color: white;
-    display: inline;
-}
-
-.container {
-    width: 1080px;
-}
-
-#content {
-    min-height: 90%;
-}
-
-.button {
-    color: #338AD7;
-    border-color: #338AD7;
-    border-radius: 10px;
-    margin-bottom: 5px;
-    border: 1px solid;
-    background: white;
-    padding: 8px 12px;
-    top: -5px;
-    font-size: 20px;
-}
-
-.button:hover {
-    border-radius: 10px;
-    background-color: #338AD7;
-    color: white;
-}
-
-.offer {
-    margin-bottom: 20px;
-}
-
-.offer-list {
-    margin-top: -50px;
-}
-
-.offerName {
-    display: inline;
-    font-weight: 400;
-    font-size: 32px;
-    margin-right: 20px;
-}
-
-.offerPrice {
-    display: inline;
-    font-size: 28px;
-    font-weight: 300;
-}
-
-.offerButtons {
-    margin-top: 15px;
-}
-
-.browse-offers-title {
-    top: -170px;
-    left: 18%;
-    position: relative;
-    color: white;
-    font-size: 72px;
-    font-weight: 400;
-}
-
-.create-offer-button {
-    display: inline;
-    float: right;
-    margin-top: 20px;
-    margin-right: 10px;
-    padding-top: 8px;
-    padding-bottom: 3px;
-    height: 35px;
-    width: 150px;
-}
-
-.no-offers-header {
-    display: inline;
-}
-
-.banner-img {
-    height: 230px;
-    background-size: cover;
-    background-image: url(/static/img/columbia_activities_fair.jpeg);
-    background-position: 0% 80%;
-    opacity: 0.5;
-}
-
-.dark-cover {
-    background-color: black;
-}
-
-.offers-list {
-    margin-left: 5%;
-    margin-right: 5%;
-}
-
-.mission-statement {
-    text-align: center;
-    max-width: 1200px;
-    margin: 0 auto;
-    width: 60%;
-    margin-top: 5rem;
-    margin-bottom: 5rem;
-    color: #338AD7;
-    font-weight: 600;
-}
-
-.mission-statement a {
-    color: #338AD7;
-}
-
-.hero {
-}
-
-.top-buttons {
-    position: fixed;
-    top: 40px;
-    right: 50px;
-}
-
-.company-name {
-    color: black !important;
-}
-
-.add-offer-form {
-    width: 720px;
-}
-
-.add-offer-title h2 {
-    margin-bottom: .5rem;
-}
-
-
-
-
 
 
