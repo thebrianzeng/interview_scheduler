@@ -35,7 +35,6 @@ def get_time_slots(start_time, end_time):
                 cur_time=str(int(cur_time)))
             label = '{} {}'.format(str(int(display_time)), am_pm)
 
-        print (time_slot, label)
         time_slots.append((time_slot, label))
         cur_time += .5
 
@@ -46,7 +45,7 @@ def get_time_slots(start_time, end_time):
 def get_interviewee_form(rc_id):
     if request.method == 'GET':
         days = ['12/5', '12/6', '12/7', '12/8', '12/9', '12/10']
-        time_slots = get_time_slots(9, 23)
+        time_slots = get_time_slots(9, 24)
         return render_template('interviewee_form.html', 
                                 rc_id=rc_id, days=days, time_slots=time_slots)
     else: # POST
