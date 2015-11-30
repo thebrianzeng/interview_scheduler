@@ -52,7 +52,7 @@ def get_interviewee_form(rc_id):
         slots_available = set(slots_to_interviewers.keys())
 
         return render_template('interviewee_form.html', 
-                                rc_id=rc_id, days=days, time_slots=time_slots, slots_available=slots_available)
+                                rc_id=rc_id, days=days, time_slots=time_slots)
     else: # POST
         name_and_availabilities = request.get_json()
         name = name_and_availabilities['name']
