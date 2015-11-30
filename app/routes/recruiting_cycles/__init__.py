@@ -42,7 +42,7 @@ def get_time_slots(start_time, end_time):
     return time_slots
 
 
-@rc.route('/<rc_id>/interviewee_form', methods=['GET', 'POST'])
+@rc.route('/<rc_id>', methods=['GET', 'POST'])
 def get_interviewee_form(rc_id):
     if request.method == 'GET':
         days = ['12/5', '12/6', '12/7', '12/8', '12/9', '12/10']
@@ -63,7 +63,7 @@ def get_interviewee_form(rc_id):
         return jsonify(data='success')
 
 
-@rc.route('/<rc_id>/interviewer_form', methods=['GET', 'POST'])
+@rc.route('/<rc_id>/interviewer', methods=['GET', 'POST'])
 def get_interviewer_form(rc_id):
     if request.method == 'GET':
         days = ['12/5', '12/6', '12/7', '12/8', '12/9', '12/10']
