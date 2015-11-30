@@ -57,9 +57,10 @@ def get_interviewee_form(rc_id):
         name_and_availabilities = request.get_json()
         name = name_and_availabilities['name']
         availabilities = name_and_availabilities['availabilities']
+        email = name_and_availabilities['email']
 
         interviewees_db.create_interviewee(name=name, availabilities=availabilities, 
-                                           rc_id=rc_id)
+                                           rc_id=rc_id, email=email)
         return jsonify(data='success')
 
 

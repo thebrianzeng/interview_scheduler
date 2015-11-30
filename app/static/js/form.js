@@ -17,9 +17,11 @@
         $('#submit-availabilities-button').click(function() {
             var availabilities = _getAvailabilities();
             var name = $('#name').val();
+            var email = $('#email').val();
 
             var nameAndAvailabilities = {
                 name: name,
+                email: email,
                 availabilities: availabilities
             };
 
