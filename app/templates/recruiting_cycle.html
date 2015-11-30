@@ -2,7 +2,20 @@
 
 {% block content %}
 
-This is your current recruiting cycle.
+<h1>This is your current recruiting cycle.</h1>
+
+<a href="/admin/{{ rc_id }}/get_schedules">Get possible schedules</a>
+
+<h2>Interviewers</h2>
+{% for interviewer in interviewers %}
+<h3>{{ interviewer.name }}: {{ interviewer.availabilities }}</h3>
+{% endfor %}
+
+<h2>Interviewees</h2>
+{% for interviewee in interviewees %}
+<h3>{{ interviewee.name }}: {{ interviewee.availabilities }}</h3>
+{% endfor %}
+
 
 {% endblock %}
 

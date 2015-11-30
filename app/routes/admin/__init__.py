@@ -1,8 +1,10 @@
 import copy
 from pprint import pprint
 
-from flask import Blueprint, request, redirect, render_template, session
+from flask import Blueprint, request, redirect, render_template, session, jsonify
 
+from app.database import interviewees as interviewees_db
+from app.database import interviewers as interviewers_db
 from app.database import recruiting_cycles as rc_db
 
 admin = Blueprint('admin', __name__)
@@ -23,38 +25,38 @@ def new_recruiting_cycle():
         return redirect(url)
 
 
-@admin.route('/get_schedules')
-def get_schedules():
-    interviewees_to_slots = get_interviewees_to_slots()
-    slots_to_interviewers = get_slots_to_interviewers()
+@admin.route('/<rc_id>/get_schedules')
+def get_schedules(rc_id):
+    interviewees_to_slots = get_interviewees_to_slots(rc_id)
+    slots_to_interviewers = get_slots_to_interviewers(rc_id)
 
     possible_schedules = match(slots_to_interviewers, interviewees_to_slots,
                                {}, [])
 
-    return jsonify(possible_schedules)
+    return jsonify(data=possible_schedules)
 
 
-def get_interviewees_to_slots():
+def get_interviewees_to_slots(rc_id):
     interviewees_to_slots = {}
 
-    interviewees = interviewees_db.get_interviewees()
+    interviewees = interviewees_db.get_interviewees(rc_id)
     for interviewee in interviewees:
         interviewees_to_slots[interviewee.name] = interviewee.availabilities
 
     return interviewees_to_slots
 
 
-def get_slots_to_interviewers():
+def get_slots_to_interviewers(rc_id):
     slots_to_interviewers = {}
 
-    interviewers = interviewers_db.get_interviewers()
+    interviewers = interviewers_db.get_interviewers(rc_id)
 
     for interviewer in interviewers:
         for slot in interviewer.availabilities:
             if slot not in slots_to_interviewers:
                 slots_to_interviewers[slot] = []
 
-            slots_to_interviewers.append(interviewer.name)
+            slots_to_interviewers[slot].append(interviewer.name)
 
     return slots_to_interviewers
 

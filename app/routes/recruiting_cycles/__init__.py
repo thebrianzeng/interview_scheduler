@@ -11,7 +11,10 @@ rc = Blueprint('recruiting_cycles', __name__)
 
 @rc.route('/<rc_id>')
 def get_rc_page(rc_id):
-    return render_template('recruiting_cycle.html')
+    interviewers = interviewers_db.get_interviewers(rc_id)
+    interviewees = interviewees_db.get_interviewees(rc_id)
+    return render_template('recruiting_cycle.html', interviewers=interviewers,
+                            interviewees=interviewees, rc_id=rc_id)
 
 
 def get_time_slots(start_time, end_time):

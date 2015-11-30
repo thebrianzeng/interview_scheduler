@@ -7,5 +7,5 @@ def create_interviewee(name, availabilities, rc_id):
     new_interviewee.save()
 
 
-def get_interviewees():
-    return Interviewee.objects
+def get_interviewees(rc_id):
+    return Interviewee.objects(rc_id=rc_id)

@@ -13,7 +13,7 @@ try:
     DEBUG = True
 
     # Meta
-    META_TITLE = 'When2Interview'
+    META_TITLE = 'when2interview'
     META_DESCRIPTION = 'Fill out your interview schedule with ease!'
     META_TWITTER_HANDLE = '@adicu'
     META_DOMAIN = 'apply.adicu.com'

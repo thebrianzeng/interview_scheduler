@@ -7,5 +7,5 @@ def create_interviewer(name, availabilities, rc_id):
     new_interviewer.save()
 
 
-def get_interviewers():
-    return Interviewer.objects
+def get_interviewers(rc_id):
+    return Interviewer.objects(rc_id=rc_id)
