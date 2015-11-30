@@ -7,6 +7,8 @@ from app.database import interviewees as interviewees_db
 from app.database import interviewers as interviewers_db
 from app.database import recruiting_cycles as rc_db
 
+from app.database import recruiting_cycles as rc_db
+
 admin = Blueprint('admin', __name__)
 
 
@@ -40,6 +42,7 @@ def get_interviewees_to_slots(rc_id):
     interviewees_to_slots = {}
 
     interviewees = interviewees_db.get_interviewees(rc_id)
+
     for interviewee in interviewees:
         interviewees_to_slots[interviewee.name] = interviewee.availabilities
 
