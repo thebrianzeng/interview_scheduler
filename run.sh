@@ -1,4 +1,5 @@
 #!/bin/bash
+sudo docker kill interview_scheduler_instance
 sudo docker rm interview_scheduler_instance
 sudo docker run \
     --name interview_scheduler_instance \
