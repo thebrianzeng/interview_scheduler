@@ -12,7 +12,21 @@
             <tr>
                 <td class="time-slot">{{ label }}</td>
                 {% for day in days %}
+
+                {% if slots_available %}
+
+                    {% if day + ":" + time_slot in slots_available %}
+                    <td data-day="{{ day }}" data-time-slot="{{ time_slot }}"></td>
+                    {% else %}
+                    <td data-day="{{ day }}" data-time-slot="{{ time_slot }}" class="slot-unavailable"></td>
+                    {% endif %}
+
+                {% else %}
+
                 <td data-day="{{ day }}" data-time-slot="{{ time_slot }}"></td>
+
+                {% endif %}
+
                 {% endfor %}
             </tr>
             {% endfor %}

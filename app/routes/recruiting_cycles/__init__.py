@@ -4,6 +4,7 @@ from flask import Blueprint, request, redirect, render_template, session, jsonif
 
 from app.database import interviewees as interviewees_db
 from app.database import interviewers as interviewers_db
+from app.routes.admin import get_slots_to_interviewers
 
 
 rc = Blueprint('recruiting_cycles', __name__)
@@ -46,8 +47,12 @@ def get_interviewee_form(rc_id):
     if request.method == 'GET':
         days = ['12/5', '12/6', '12/7', '12/8', '12/9', '12/10']
         time_slots = get_time_slots(9, 24)
+
+        slots_to_interviewers = get_slots_to_interviewers(rc_id) 
+        slots_available = set(slots_to_interviewers.keys())
+
         return render_template('interviewee_form.html', 
-                                rc_id=rc_id, days=days, time_slots=time_slots)
+                                rc_id=rc_id, days=days, time_slots=time_slots, slots_available=slots_available)
     else: # POST
         name_and_availabilities = request.get_json()
         name = name_and_availabilities['name']

@@ -3,8 +3,10 @@
     function _getAvailabilities() {
         var availabilities = [];
         $('.highlighted').each(function() {
-            var dayAndTimeSlot = $(this).data('day') + ':' + $(this).data('time-slot');
-            availabilities.push(dayAndTimeSlot);
+            if (!$(this).hasClass('slot-unavailable')) {
+                var dayAndTimeSlot = $(this).data('day') + ':' + $(this).data('time-slot');
+                availabilities.push(dayAndTimeSlot);
+            }
         });
 
         return availabilities;

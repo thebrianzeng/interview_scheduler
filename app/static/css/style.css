@@ -141,4 +141,6 @@ a, a:hover {
     }
 }
 
-
+table td.slot-unavailable {
+    background-color: red;
+}
