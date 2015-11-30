@@ -10,7 +10,7 @@ from app.routes.admin import get_slots_to_interviewers
 rc = Blueprint('recruiting_cycles', __name__)
 
 
-@rc.route('/<rc_id>')
+@rc.route('/<rc_id>/data')
 def get_rc_page(rc_id):
     interviewers = interviewers_db.get_interviewers(rc_id)
     interviewees = interviewees_db.get_interviewees(rc_id)
