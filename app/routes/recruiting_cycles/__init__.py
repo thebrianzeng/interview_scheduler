@@ -67,7 +67,6 @@ def get_interviewer_form(rc_id):
         name_and_availabilities = request.get_json()
         name = name_and_availabilities['name']
         availabilities = name_and_availabilities['availabilities']
-                                  availabilities=availabilities)
 
         interviewers_db.create_interviewer(name=name, availabilities=availabilities,
                                            rc_id=rc_id)
