@@ -23,10 +23,10 @@ ADD . /interview_scheduler
 RUN pip install -r /interview_scheduler/config/requirements.txt
 
 # Expose ports
-EXPOSE 5000 
+EXPOSE 6003 
 
 # Set the default directory where CMD will execute
 WORKDIR /interview_scheduler
 
 # Default command to execute
-CMD gunicorn --bind 0.0.0.0:5000 app:app
+CMD gunicorn --bind 0.0.0.0:6003 app:app
