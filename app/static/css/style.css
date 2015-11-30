@@ -14,7 +14,22 @@ h1 {
 }
 
 input[type="text"] {
-    padding: 1rem;
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+}
+
+input[type="submit"], button {
+    font-size: 1rem;
+    background-color: #59ACFF;
+    color: white;
+    border: 0;
+    outline: 0;
+    padding: 1rem 2rem;
+    font-size: 1rem;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16),
+                0 2px 10px 0 rgba(0, 0, 0, 0.12);
+    -webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16),
+                        0 2px 10px 0 rgba(0, 0, 0, 0.12);
 }
 
 .text-content {
@@ -22,16 +37,36 @@ input[type="text"] {
 }
 
 .table {
-    box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    margin-left: -3rem;
-    padding: 1rem 0 1rem 3rem;
     max-width: 100%;
-    overflow: scroll;
+    display: inline-block;
+    margin: 2rem 0 2rem -3rem;
+    padding: 0 0 0 3rem;
+    overflow-x: auto;
+    background-image: -webkit-gradient(linear, 0% 50%, 100% 50%, color-stop(0%, #ffffff), color-stop(100%, rgba(255, 255, 255, 0))), -webkit-gradient(linear, 100% 50%, 0% 50%, color-stop(0%, #ffffff), color-stop(100%, rgba(255, 255, 255, 0))), -webkit-gradient(linear, 0% 50%, 100% 50%, color-stop(0%, #c3c3c5), color-stop(100%, rgba(195, 195, 197, 0))), -webkit-gradient(linear, 100% 50%, 0% 50%, color-stop(0%, #c3c3c5), color-stop(100%, rgba(195, 195, 197, 0)));
+    background-image: -webkit-linear-gradient(left, #ffffff, rgba(255, 255, 255, 0)), -webkit-linear-gradient(right, #ffffff, rgba(255, 255, 255, 0)), -webkit-linear-gradient(left, #c3c3c5, rgba(195, 195, 197, 0)), -webkit-linear-gradient(right, #c3c3c5, rgba(195, 195, 197, 0));
+    background-image: -moz-linear-gradient(left, #ffffff, rgba(255, 255, 255, 0)), -moz-linear-gradient(right, #ffffff, rgba(255, 255, 255, 0)), -moz-linear-gradient(left, #c3c3c5, rgba(195, 195, 197, 0)), -moz-linear-gradient(right, #c3c3c5, rgba(195, 195, 197, 0));
+    background-image: -o-linear-gradient(left, #ffffff, rgba(255, 255, 255, 0)), -o-linear-gradient(right, #ffffff, rgba(255, 255, 255, 0)), -o-linear-gradient(left, #c3c3c5, rgba(195, 195, 197, 0)), -o-linear-gradient(right, #c3c3c5, rgba(195, 195, 197, 0));
+    background-image: linear-gradient(left, #ffffff, rgba(255, 255, 255, 0)), linear-gradient(right, #ffffff, rgba(255, 255, 255, 0)), linear-gradient(left, #c3c3c5, rgba(195, 195, 197, 0)), linear-gradient(right, #c3c3c5, rgba(195, 195, 197, 0));
+    background-position: 0 0, 100% 0, 0 0, 100% 0;
+    background-repeat: no-repeat;
+    background-color: white;
+    background-size: 4em 100%, 4em 100%, 1em 100%, 1em 100%;
+    background-attachment: local, local, scroll, scroll;
 }
 
 table {
     border-collapse: collapse;
+    table-layout: fixed;
+    width: 100%;
+}
+
+table .corner {
+    position: absolute;
+    visibility: hidden;
+}
+
+table .corner + th {
+    border-left: 1px solid #CCCCCC;
 }
 
 .time-slot {
@@ -55,6 +90,8 @@ table tr:nth-child(even) .time-slot {
 }
 
 table th {
+    background-color: #999999;
+    color: white;
     font-weight: 400;
     font-size: 0.75rem;
 }
@@ -62,20 +99,20 @@ table th {
 table td, table th {
     border: none;
     outline: 0;
-    width:60px;
+    width: 60px;
     height:12px;
     text-align:center;
     vertical-align:middle;
-    background-color: #CCCCCC;
     border-right:1px solid #FFFFFF;
 }
 
 table td {
+    background-color: #DDDDDD;
     border-top:1px solid #FFFFFF;
 }
 
 table td.highlighted {
-    background-color:#999999;
+    background-color: #50E582;
 }
 
 .content {
@@ -85,7 +122,7 @@ table td.highlighted {
     -webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16),
                         0 2px 10px 0 rgba(0, 0, 0, 0.12);
     margin: 0 auto;
-    max-width: 50rem;
+    max-width: 40rem;
     padding: 2rem;
 }
 

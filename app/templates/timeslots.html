@@ -1,20 +1,23 @@
-<div class="table">
-    <table id="availabilities">
-        <thead>
-            {% for day in days %}
-            <th>{{ day }}</th>
-            {% endfor %}
-        </thead>
+<div class="centered-table">
+    <div class="table">
+        <table id="availabilities" style="width: {{  days | length * 60 }}px ">
+            <thead>
+                <th class="corner"></th>
+                {% for day in days %}
+                <th>{{ day }}</th>
+                {% endfor %}
+            </thead>
 
-        {% for time_slot, label in time_slots %}
-        <tr>
-            <td class="time-slot">{{ label }}</td>
-            {% for day in days %}
-            <td data-day="{{ day }}" data-time-slot="{{ time_slot }}"></td>
+            {% for time_slot, label in time_slots %}
+            <tr>
+                <td class="time-slot">{{ label }}</td>
+                {% for day in days %}
+                <td data-day="{{ day }}" data-time-slot="{{ time_slot }}"></td>
+                {% endfor %}
+            </tr>
             {% endfor %}
-        </tr>
-        {% endfor %}
-    </table>
+        </table>
+    </div>
 </div>
 
 <script>
