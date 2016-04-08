@@ -29,4 +29,4 @@ EXPOSE 6003
 WORKDIR /interview_scheduler
 
 # Default command to execute
-CMD gunicorn --bind 0.0.0.0:6003 app:app --log-file /opt/logs/gunicorn.log --log-level debug
+CMD gunicorn --bind 0.0.0.0:6003 app:app --log-file /opt/logs/gunicorn.log 
